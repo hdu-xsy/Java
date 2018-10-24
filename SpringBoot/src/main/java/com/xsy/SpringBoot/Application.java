@@ -2,9 +2,18 @@ package com.xsy.SpringBoot;
 
 import com.xsy.SpringBoot.DAO.Person;
 import com.xsy.SpringBoot.hello.HelloService;
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +49,42 @@ public class Application {
 	    return "index";
     }
 
+    @Bean
+	public ServletWebServerFactory servletContainer() {
+		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+		tomcat.setPort(8080);
+		tomcat.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND,"/404"));
+		return tomcat;
+	}
+
     //作为项目启动的入口
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
+
+	//自动转向
+	/*@Bean
+	public TomcatServletWebServerFactory servletWebServerFactory() {
+		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+			@Override
+			protected void postProcessContext(Context context) {
+				SecurityConstraint securityConstraint = new SecurityConstraint();
+				securityConstraint.setUserConstraint("CONFIDENTIAL");
+				SecurityCollection collection = new SecurityCollection();
+				collection.addPattern("/*");
+				securityConstraint.addCollection(collection);
+				context.addConstraint(securityConstraint);
+			}
+		};
+		tomcat.addAdditionalTomcatConnectors(httpConnector());
+		return tomcat;
+	}
+	@Bean
+	public Connector httpConnector() {
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+		connector.setScheme("http");
+		connector.setSecure(false);
+		connector.setRedirectPort(8443);
+		return connector;
+	}*/
 }
