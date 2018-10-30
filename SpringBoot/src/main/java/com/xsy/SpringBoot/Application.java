@@ -1,7 +1,9 @@
 package com.xsy.SpringBoot;
 
 import com.xsy.SpringBoot.DAO.Person;
+import com.xsy.SpringBoot.DAO.PersonRepository;
 import com.xsy.SpringBoot.hello.HelloService;
+import com.xsy.SpringBoot.support.CustomRepositoryFactoryBean;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
@@ -13,6 +15,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +27,12 @@ import java.util.List;
 //必须使用XML配置时 @ImportResource{{"classpath:some-context.xml","classpath:another-context.xml"}}
 @Controller
 @SpringBootApplication  //开启自动配置
+//@EnableJpaRepositories(repositoryBaseClass = CustomRepositoryFactoryBean.class)
 public class Application {
 
     @Autowired
     HelloService helloService;
+    //PersonRepository personRepository;
 
 	@RequestMapping("/hello")
         String hello() {

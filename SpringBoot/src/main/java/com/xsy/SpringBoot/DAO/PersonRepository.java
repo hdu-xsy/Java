@@ -1,13 +1,14 @@
 package com.xsy.SpringBoot.DAO;
 
 import com.xsy.SpringBoot.Entity.Person;
+import com.xsy.SpringBoot.support.CustomRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PersonRepository extends JpaRepository<Person,Long> {
+public interface PersonRepository extends CustomRepository<Person,Long> {//JpaRepository<Person,Long> {
 
     List<Person> findByAddress(String name);
 
