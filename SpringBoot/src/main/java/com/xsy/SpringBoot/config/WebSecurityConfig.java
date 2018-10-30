@@ -17,14 +17,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 //设置SpringSecurity对/和/login路径不拦截
+                //.requestMatchers()
                 .antMatchers("/","/login").permitAll()
-                .anyRequest().authenticated()
+                //只拦截
+                .antMatchers("/chat").authenticated()
                 .and()
                 //设置SpringSecurity的登陆页面访问的路径为/login
                 .formLogin().loginPage("/login")
                 //登陆成功后转向/chat路径                .defaultSuccessUrl("/chat")
                 .permitAll()
                 .and().logout().permitAll();
+        http.csrf().disable();
     }
 
     //在内存中分别配置两个用户，角色是USER

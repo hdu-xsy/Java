@@ -2,6 +2,7 @@ package com.xsy.SpringBoot.Controller;
 
 import com.xsy.SpringBoot.DAO.PersonRepository;
 import com.xsy.SpringBoot.Entity.Person;
+import com.xsy.SpringBoot.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,8 @@ public class DataController {
     @Autowired
     PersonRepository personRepository;
 
+    @Autowired
+    PersonService personService;
     /*
     *  <S extends T> Iterable<S> save(Iterable><S> entities)
     *  void delete(ID id)
@@ -84,11 +87,15 @@ public class DataController {
         return personPage;
     }
 
-    @RequestMapping("/auto")
-    public Page<Person> auto(Person person) {
-        Page<Person> pagePeople = personRepository.findByAuto(person,new PageRequest(0,10));
-
-        return pagePeople;
+    @RequestMapping("/rollback")
+    public Person rollback(Person person) {
+        return personService.savePersonWithRollBack(person);
     }
+
+    @RequestMapping("/norollback")
+    public Person noRollback(Person person) {
+        return personService.savePersonWithoutRollBack(person);
+    }
+
 
 }
