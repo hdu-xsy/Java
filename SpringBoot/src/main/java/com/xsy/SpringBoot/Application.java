@@ -1,28 +1,34 @@
 package com.xsy.SpringBoot;
 
-import com.xsy.SpringBoot.DAO.Person;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xsy.SpringBoot.DAO.PersonDao;
 import com.xsy.SpringBoot.hello.HelloService;
-import org.apache.catalina.Context;
-import org.apache.catalina.connector.Connector;
-import org.apache.tomcat.util.descriptor.web.SecurityCollection;
-import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
 //必须使用XML配置时 @ImportResource{{"classpath:some-context.xml","classpath:another-context.xml"}}
 @Controller
+@EnableCaching
 @SpringBootApplication  //开启自动配置
 public class Application {
 
@@ -36,11 +42,11 @@ public class Application {
 
     @RequestMapping("/")
     public String index(Model model) {
-	    Person single = new Person("aa",11);
-	    List<Person> people = new ArrayList<Person>();
-	    Person p1 = new Person("xx",11);
-	    Person p2 = new Person("yy",22);
-	    Person p3 = new Person("zz",33);
+	    PersonDao single = new PersonDao("aa",11);
+	    List<PersonDao> people = new ArrayList<PersonDao>();
+	    PersonDao p1 = new PersonDao("xx",11);
+	    PersonDao p2 = new PersonDao("yy",22);
+	    PersonDao p3 = new PersonDao("zz",33);
 	    people.add(p1);
 	    people.add(p2);
 	    people.add(p3);
@@ -87,4 +93,24 @@ public class Application {
 		connector.setRedirectPort(8443);
 		return connector;
 	}*/
+
+	@Bean
+	@SuppressWarnings({"rawtypes","unchecked"})
+	public RedisTemplate<Object,Object> redisTemplate(RedisConnectionFactory redisConnectionFactory)
+		throws UnknownHostException {
+		RedisTemplate<Object,Object> template = new RedisTemplate<Object, Object>();
+		template.setConnectionFactory(redisConnectionFactory);
+
+		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+		ObjectMapper om = new ObjectMapper();
+		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+		jackson2JsonRedisSerializer.setObjectMapper(om);
+
+		template.setValueSerializer(jackson2JsonRedisSerializer);
+		template.setKeySerializer(new StringRedisSerializer());
+
+		template.afterPropertiesSet();
+		return template;
+	}
 }

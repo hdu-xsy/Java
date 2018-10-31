@@ -1,15 +1,15 @@
 package com.xsy.SpringBoot.DAO;
 
-public class Person {
+public class PersonDao {
     private String name;
     private Integer age;
 
-    public Person() {
+    public PersonDao() {
         super();
     }
-    public Person(String name,Integer age) {
+    public PersonDao(String name, Integer age) {
         super();
-        this.name = name;
+        this.name =name;
         this.age = age;
     }
     public String getName() {

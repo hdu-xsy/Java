@@ -1,7 +1,9 @@
 package com.xsy.SpringBoot.Controller;
 
 import com.xsy.SpringBoot.DAO.PersonRepository;
+import com.xsy.SpringBoot.DAO.RedisPersonDao;
 import com.xsy.SpringBoot.Entity.Person;
+import com.xsy.SpringBoot.Entity.RedisPerson;
 import com.xsy.SpringBoot.Service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,9 @@ public class DataController {
 
     @Autowired
     PersonService personService;
+
+    @Autowired
+    RedisPersonDao redisPersonDao;
     /*
     *  <S extends T> Iterable<S> save(Iterable><S> entities)
     *  void delete(ID id)
@@ -97,5 +102,21 @@ public class DataController {
         return personService.savePersonWithoutRollBack(person);
     }
 
+    @RequestMapping("/set")
+    public void set() {
+        RedisPerson person = new RedisPerson("1","a",11);
+        redisPersonDao.save(person);
+        redisPersonDao.stringRedisTemplateDemo();
 
+    }
+
+    @RequestMapping("/getStr")
+    public String getStr() {
+        return redisPersonDao.getString();
+    }
+
+    @RequestMapping("/getPerson")
+    public RedisPerson getPerson() {
+        return redisPersonDao.getPerson();
+    }
 }
