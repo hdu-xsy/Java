@@ -14,7 +14,7 @@ public class SysUser implements UserDetails {   //
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //GeneratedValue默认自增 会生成一个HIBERNATE_SEQUENCE的序列
     private Long id;
     private String username;
     private String password;
@@ -24,7 +24,7 @@ public class SysUser implements UserDetails {   //
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> auths = new ArrayList<>();
+        List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>();
         List<SysRole> roles = this.getRoles();
         for(SysRole role : roles) {
             auths.add(new SimpleGrantedAuthority(role.getName()));

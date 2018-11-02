@@ -40,21 +40,6 @@ public class Application {
 	        return helloService.sayHello();
     }
 
-    /*@RequestMapping("/")
-    public String index(Model model) {
-	    PersonDao single = new PersonDao("aa",11);
-	    List<PersonDao> people = new ArrayList<PersonDao>();
-	    PersonDao p1 = new PersonDao("xx",11);
-	    PersonDao p2 = new PersonDao("yy",22);
-	    PersonDao p3 = new PersonDao("zz",33);
-	    people.add(p1);
-	    people.add(p2);
-	    people.add(p3);
-	    model.addAttribute("singlePerson",single);
-	    model.addAttribute("people",people);
-	    return "index";
-    }*/
-
     @Bean
 	public ServletWebServerFactory servletContainer() {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();

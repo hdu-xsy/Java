@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -36,18 +36,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //登陆成功后转向/chat路径                .defaultSuccessUrl("/chat")
                 .failureUrl("/login?error")
                 .permitAll()
-                .and().logout().permitAll();    //定制注销行为,注销请求可任意访问
-        http.csrf().disable();
+                .and().logout().permitAll()    //定制注销行为,注销请求可任意访问
+                .and().csrf().disable();
     }
 
     //在内存中分别配置两个用户，角色是USER
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserService());
-                //.inMemoryAuthentication()
-                //.withUser("xsy").password("{noop}xsy").roles("USER")
-                //.and()
-                //.withUser("springboot").password("{noop}springboot").roles("USER");
+        auth//.userDetailsService(customUserService());
+                .inMemoryAuthentication()
+                .withUser("xsy").password("{noop}xsy").roles("ADMIN")
+                .and()
+                .withUser("springboot").password("{noop}springboot").roles("USER");
     }
 
     //不拦截静态资源

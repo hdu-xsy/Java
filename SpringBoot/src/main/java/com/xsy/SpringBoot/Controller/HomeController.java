@@ -15,7 +15,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        /*PersonDao single = new PersonDao("aa",11);
+        PersonDao single = new PersonDao("aa",11);
         List<PersonDao> people = new ArrayList<PersonDao>();
         PersonDao p1 = new PersonDao("xx",11);
         PersonDao p2 = new PersonDao("yy",22);
@@ -24,9 +24,9 @@ public class HomeController {
         people.add(p2);
         people.add(p3);
         model.addAttribute("singlePerson",single);
-        model.addAttribute("people",people);*/
+        model.addAttribute("people",people);
         Msg msg = new Msg("Title","Content","extraInfo AdminOnly");
         model.addAttribute("msg",msg);
-        return "home";
+        return "index";
     }
 }
