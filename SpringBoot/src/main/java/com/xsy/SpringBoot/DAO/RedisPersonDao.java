@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 @Repository
 public class RedisPersonDao {
 
-    @Autowired
+    /*@Autowired
     StringRedisTemplate stringRedisTemplate;
 
     @Resource(name = "stringRedisTemplate")
@@ -39,7 +39,7 @@ public class RedisPersonDao {
 
     public RedisPerson getPerson() {
         return (RedisPerson) valOps.get("1");
-    }
+    }*/
 
 
 }

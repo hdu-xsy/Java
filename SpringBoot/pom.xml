@@ -94,6 +94,20 @@
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
+<!--		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>acitvemq-broker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframe</groupId>
+			<artifactId>spring-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+		</dependency>-->
+
+
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -101,6 +115,13 @@
 			<version>27.0-jre</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 

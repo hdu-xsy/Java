@@ -34,7 +34,7 @@ public class DataController {
     *
     * */
     @RequestMapping("/save")
-    public Person sava(String name,String address,Integer age) {
+    public Person save(String name,String address,Integer age) {
 
         Person p = personRepository.save(new Person(null,name,age,address));
 
@@ -102,7 +102,7 @@ public class DataController {
         return personService.savePersonWithoutRollBack(person);
     }
 
-    @RequestMapping("/set")
+   /* @RequestMapping("/set")
     public void set() {
         RedisPerson person = new RedisPerson("1","a",11);
         redisPersonDao.save(person);
@@ -118,5 +118,5 @@ public class DataController {
     @RequestMapping("/getPerson")
     public RedisPerson getPerson() {
         return redisPersonDao.getPerson();
-    }
+    }*/
 }

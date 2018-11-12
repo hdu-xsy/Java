@@ -28,7 +28,7 @@ import java.util.List;
 
 //必须使用XML配置时 @ImportResource{{"classpath:some-context.xml","classpath:another-context.xml"}}
 @Controller
-@EnableCaching
+//@EnableCaching
 @SpringBootApplication  //开启自动配置
 public class Application {
 
@@ -79,7 +79,7 @@ public class Application {
 		return connector;
 	}*/
 
-	@Bean
+	/*@Bean
 	@SuppressWarnings({"rawtypes","unchecked"})
 	public RedisTemplate<Object,Object> redisTemplate(RedisConnectionFactory redisConnectionFactory)
 		throws UnknownHostException {
@@ -97,5 +97,5 @@ public class Application {
 
 		template.afterPropertiesSet();
 		return template;
-	}
+	}*/
 }

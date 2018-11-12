@@ -14,4 +14,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/chat").setViewName("/chat");
         registry.addViewController("/404").setViewName("/404");
     }
+
+
 }
