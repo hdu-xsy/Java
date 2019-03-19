@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--
+        单例（ Singleton） ： 在整个应用中， 只创建bean的一个实例。
+        原型（ Prototype） ： 每次注入或者通过Spring应用上下文获取的时候， 都会创建一个新的bean实例。
+        会话（ Session） ： 在Web应用中， 为每个会话创建一个bean实例。
+        请求（ Rquest） ： 在Web应用中， 为每个请求创建一个bean实例。
+    -->
+
+
+    <util:list id="StringList">
+        <!--
+            util:constant 引用某个类型的public static域， 并将其暴露为bean
+            util:list 创建一个java.util.List类型的bean， 其中包含值或引用
+            util:map 创建一个java.util.Map类型的bean， 其中包含值或引用
+            util:properties 创建一个java.util.Properties类型的bean
+            util:property-path 引用一个bean的属性（ 或内嵌属性） ， 并将其暴露为bean
+            util:set 创建一个java.util.Set类型的bean， 其中包含值或引用
+        -->
+        <value>"11"</value>
+        <value>"22"</value>
+    </util:list>
+
+    <bean id="xmlService" class="xml.XMLServiceImpl" c:s1="s111111111" c:s2="s2222222">
+        <!--<constructor-arg value="s11111111"/>
+        <constructor-arg value="s22222222"/>-->
+        <constructor-arg>
+            <list>
+            <!--set-->
+                <value>"11"</value>
+                <value>"22"</value>
+                <!--<ref bean=""></ref>-->
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="useXMLService" class="xml.UseXMLServiceImpl" c:_0-ref="xmlService"><!--p:_1-ref="xmlService"-->
+        <!--<constructor-arg ref="xmlService"/>-->
+        <!--<property name="xmlService " ref="xmlService"/>   set注入-->
+    </bean>
+</beans>
