@@ -24,7 +24,7 @@ public class test {
             e.printStackTrace();
         }*/
 
-        MyThread thread = new MyThread("MyThread : ",100,2);
+        MyThread thread = new MyThread("MyThread : ",1);
         ExecutorService pool = Executors.newFixedThreadPool(4);
         //ExecutorService pool = Executors.newCachedThreadPool();
         //ExecutorService pool = Executors.newSingleThreadExecutor();

@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58507c8f-65d5-47dc-bcdc-bc8669415128" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/junitgenerator-prj-settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/junitgenerator-prj-settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/io.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BufferedReaderandWritter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NIOServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NIOServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/text" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/text" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/text.bak" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/text.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/BufferedReaderandWritter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HttpServer$HttpHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HttpServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/NIOServer$Handler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/NIOServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/text" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/text" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/text.bak" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/text.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/text.bak" beforeDir="false" afterPath="$PROJECT_DIR$/text.bak" afterDir="false" />
-    </list>
+    <list default="true" id="58507c8f-65d5-47dc-bcdc-bc8669415128" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,6 +162,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -275,16 +249,18 @@
       <workItem from="1553573358679" duration="1488000" />
       <workItem from="1553762444004" duration="180000" />
       <workItem from="1553762733660" duration="57000" />
+      <workItem from="1554125016998" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9659000" />
+    <option name="totallyTimeSpent" value="9665000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="9" width="1169" height="996" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26708075" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2715173" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />

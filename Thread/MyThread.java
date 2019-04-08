@@ -1,29 +1,30 @@
 public class MyThread extends Thread {
 
-    private int num;
-
-    private int num2;
+    private int count = 0;
 
     private String name;
 
+    private int change;
+
     MyThread() {}
 
-    MyThread(String name,int num,int num2) {
+    MyThread(String name) {
         this.name = name;
-        this.num = num;
-        this.num2 = num2;
+    }
+
+    MyThread(String name,int change) {
+        this.name = name;
+        this.change = change;
     }
 
     @Override
-    public synchronized void run(){
+    public void run(){
         try {
-            Num.i(num);
-            if (num == 100) {
-                wait(3000);
-                //Thread.sleep(3000);
-            }
-            Num.j(num2);
-            Num.print();
+            int tmp = count;
+            tmp += change;
+            if (change == -1) sleep(3000);
+            count = tmp;
+            System.out.println(name + count);
         } catch (Exception e) {
             e.printStackTrace();
         }
